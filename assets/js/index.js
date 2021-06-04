@@ -18,7 +18,6 @@ function saveState(buttonEl) {
     axios({
         method: toggleEl.checked ? 'post' : 'delete',
         url: endpoint,
-        headers: { 'Content-Type': 'application/json' },
         data
     }).then(response => {
         buttonEl.disabled = false;
@@ -30,12 +29,12 @@ function saveState(buttonEl) {
         }
 
         const enabledDisabled = toggleEl.checked ? 'enabled' : 'disabled';
-        setMessage('success', `Your "Get Started" Messenger button was ${enabledDisabled}.`);
-    }).catch(error => {
+        setMessage('success', `Your "Get Started" Messenger button was ${enabledDisabled}. Check your Facebook Page Messenger.`);
+    }).catch(() => {
         buttonEl.disabled = false;
         toggleSpinner();
 
-        console.log(error)
+        setMessage('danger', 'Something went wrong with your request. Your access token might be invalid or malformed.');
     });
 }
 
