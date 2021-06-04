@@ -29,7 +29,7 @@ function saveState(buttonEl) {
         }
 
         const enabledDisabled = toggleEl.checked ? 'enabled' : 'disabled';
-        setMessage('success', `Your "Get Started" Messenger button was ${enabledDisabled}. Check your Facebook Page Messenger.`);
+        setMessage('success', `Your "Get Started" Messenger button was <strong>${enabledDisabled}</strong>. Check your Facebook Page Messenger.`);
     }).catch(() => {
         buttonEl.disabled = false;
         toggleSpinner();
