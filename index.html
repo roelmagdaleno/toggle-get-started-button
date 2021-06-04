@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Toggle Get Started Messenger Button</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<style>
+		body {
+			background-color: #F9FAFB;
+		}
+
+		footer {
+			background-color: #111827;
+			bottom: 0;
+			color: white;
+			height: 90px;
+			position: absolute;
+			text-align: center;
+			width: 100%;
+		}
+
+		.main {
+			position: relative;
+			min-height: 100vh;
+		}
+
+		.content-wrap {
+			padding-bottom: 90px;
+		}
+	</style>
+</head>
+<body>
+
+<div class="main">
+	<div class="content-wrap">
+		<section class="container">
+			<h1 class="">Toggle "Get Started" Messenger Button</h1>
+
+			<div class="mt-4">
+				<label for="page-access-token" class="form-label">Page Access Token</label>
+				<input type="text" class="form-control" id="page-access-token" placeholder="Ex: EAAEKBB5HUZCYBADk...">
+				<div class="form-text">The page access token is never shared and stored.</div>
+			</div>
+
+			<div class="form-check mt-4">
+				<input type="checkbox" class="form-check-input" id="toggle-get-started">
+				<label for="toggle-get-started" class="form-check-label">
+					Enable "Get Started" Button
+				</label>
+			</div>
+
+			<div class="mt-4 d-flex align-items-center">
+				<button type="button" class="btn btn-primary me-3" onclick="saveState(this)">
+					Save
+				</button>
+
+				<div class="spinner-border spinner-border-sm d-none" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+			</div>
+
+			<div class="mt-4" style="height: 72px;">
+				<div class="alert" id="messages" role="alert"></div>
+			</div>
+		</section>
+
+		<section class="container mt-4">
+			<h2>FAQ</h2>
+
+			<h5><strong>How do I get my page access token?</strong></h5>
+			<p>You have to <a href="https://developers.facebook.com/docs/development/create-an-app/" target="_blank">create a Facebook App</a> first and give your Facebook Page a <code>pages_messaging</code> <a href="https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api/get-started-button/#permissions" target="_blank">permission</a>. Then, follow the steps 1 and 2 in the <a href="https://developers.facebook.com/docs/messenger-platform/getting-started/quick-start#getting_started" target="_blank">Facebook tutorial</a>.</p>
+
+			<div class="alert alert-warning">The generated token will NOT be saved in Facebook UI, you have to save your token in a document. Each time you select a Page from the dropdown, a new token will be generated. If a new token is generated, previously created tokens will continue to function.</div>
+
+			<h5 class="mt-4"><strong>The page access token is stored in this website?</strong></h5>
+			<p>No. We don't store nor share your page access token to third party.</p>
+
+			<h5 class="mt-4"><strong>What happen if I abuse Facebook API service?</strong></h5>
+			<p>When you click on "Save" button it will run one API request to Facebook but if you make more than <a href="https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api/get-started-button/#rate_limit" target="_blank">10 requests within 10 minutes</a>, Facebook won't let you run more than that.</p>
+		</section>
+	</div>
+
+	<footer class="p-4">
+		<p class="m-0">Made by <a href="https://roelmagdaleno.com" target="_blank" class="text-white">Roel Magdaleno</a></p>
+	</footer>
+</div>
+
+<script src="assets/js/axios.min.js"></script>
+<script src="assets/js/index.js"></script>
+
+</body>
+</html>
